@@ -1,0 +1,114 @@
+#####
+characters
+###
+<html>
+<head>
+<title>{$mybb->settings['bbname']} - Charakterübersicht</title>
+{$headerinclude}
+</head>
+<body>
+{$header}
+<table border="0" cellspacing="{$theme['borderwidth']}" cellpadding="{$theme['tablespace']}" class="tborder">
+<tr>
+<td class="thead" ><div class="headline">Charakterübersicht</div></td>
+	<tr><td class="tcat" align="center">
+		<form id="chara_sort" method="post" action="character.php">
+				<table><td class="smalltext">Sortieren nach:</td>
+			<td><select name="sort_chara">
+				<option value="username" selected>Charaktername</option>
+				<option value="fid3">Geschlecht</option>
+				<option value="fid34">Blutstatus</option>
+				<option value="fid56">Körpergröße</option>
+				<option value="fid58">Gesinnung</option>
+				</select></td>
+			<td><select name="sort_way">
+				<option value="ASC" selected>Aufsteigend</option>
+				<option value="DESC">Absteigend</option>
+				</select></td>
+			<td  align="center">
+<input type="submit" name="chara_sort" value="Sortieren" id="submit" class="button"></td></tr>
+			</table>
+	</form>
+			<form id="chara_filter" method="post" action="character.php">
+				<table><td class="smalltext">Filtern nach:</td>
+			<td><select name="filter_blood">
+				<option value="%" selected>Zeige alle Blutstati</option>
+{$filter_blood}
+				</select></td>
+			<td><select name="filter_sex">
+				<option value="%" selected>Alle Sexulitäten</option>
+				<option value="Hetero">Heterosexuell</option>
+				<option value="Homo">Homosexuell</option>
+				<option value="Bi">Bisexuell</option>
+				<option value="Pan">Pansexuell</option>
+				</select></td>
+					<td><select name="filter_gender">
+				<option value="%" selected>Beide Geschlechter</option>
+				<option value="weiblich">Weiblich</option>
+				<option value="männlich">Männlich</option>
+				</select></td>
+			<td  align="center">
+<input type="submit" name="chara_filter" value="Filtern" id="submit" class="button"></td></tr>
+			</table>
+	</form>
+		</td></tr>
+</tr>
+	<tr><td class="trow1" align="center">
+		<h1>Aktuell sind <i>{$chara_count}</i> Charaktere eingetragen</h1>
+		<table width="100%" style="	border-collapse: collapse;" cellpaddin ="4px"><tr>
+		<td class="thead">
+			<div class="listen_title">Charakter</div>
+		</td>
+			<td class="thead">
+			<div class="listen_title">Charakterinfos</div>
+		</td>													<td class="thead">
+			<div class="listen_title">Blutstatus</div>
+		</td>			
+					<td class="thead">
+			<div class="listen_title">Sexualität/Beziehungstatus</div>
+		</td>
+			<td class="thead">
+			<div class="listen_title">Gesinnung</div>
+		</td>
+							<td class="thead">
+			<div class="listen_title">Beruf/Ausbildung</div>
+		</td>
+
+	</tr>
+		{$characters_bit}
+	</table>
+	
+	</td></tr>
+</table>
+{$footer}
+</body>
+</html>
+
+######
+characters_bit
+###
+<tr class="table_bottom">
+<td class="trow1">
+			<div class="charactername_list">{$charaname}</div>
+		</td>
+									<td class="trow1">
+										<div class="charas_infos"><b>Geschlecht:</b> {$gender}<br />
+											<b>Alter:</b> {$age} Jahre<br />
+											<b>Größe:</b> {$height}<br />
+											<b>Augenfarbe:</b> {$eyes}<br />
+											</div>
+		</td>
+													<td class="trow1">
+										<div class="charas_infos">{$blood}<br /></div>
+		</td>
+				
+								<td class="trow1">
+			<div class="charas_infos">{$sex} <br /> {$relation}</div>
+		</td>
+							<td class="trow1">
+			<div class="charas_infos">{$attitude}</div>
+		</td>
+							<td class="trow1">
+			<div class="charas_infos">{$work}</div>
+		</td>
+	</tr>
